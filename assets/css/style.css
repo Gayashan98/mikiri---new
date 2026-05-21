@@ -1,0 +1,157 @@
+/* ----------------------------------------------------
+   R.K. Dhanesh Mee Kiri - Premium Custom CSS
+   ---------------------------------------------------- */
+
+:root {
+    --color-clay-50: #fdf6f0;
+    --color-clay-100: #fbece1;
+    --color-clay-500: #d35400;
+    --color-clay-600: #ba4a00;
+    --color-clay-700: #a03e00;
+    
+    --color-cream-50: #fefefe;
+    --color-cream-100: #fcfbf7;
+    --color-cream-200: #f7f4eb;
+    
+    --color-gold-500: #f59e0b;
+    --color-gold-600: #d97706;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* Premium Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--color-cream-100);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--color-clay-100);
+    border-radius: 9999px;
+    border: 2px solid var(--color-cream-100);
+    transition: all 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--color-clay-500);
+}
+
+/* Custom Glassmorphism */
+.glass-nav {
+    background: rgba(252, 251, 247, 0.8);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(211, 84, 0, 0.1);
+}
+
+.glass-card {
+    background: rgba(255, 255, 255, 0.65);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(211, 84, 0, 0.08);
+}
+
+.glass-card-dark {
+    background: rgba(17, 24, 39, 0.8);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Floating Animations for Curd Pots */
+@keyframes float {
+    0% {
+        transform: translateY(0px) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-10px) rotate(1deg);
+    }
+    100% {
+        transform: translateY(0px) rotate(0deg);
+    }
+}
+
+.animate-float {
+    animation: float 4s ease-in-out infinite;
+}
+
+/* Gentle Milk-Pour / Cream wave animation */
+@keyframes milkWave {
+    0% {
+        transform: translateX(0) translateZ(0) scaleY(1);
+    }
+    50% {
+        transform: translateX(-25%) translateZ(0) scaleY(0.9);
+    }
+    100% {
+        transform: translateX(-50%) translateZ(0) scaleY(1);
+    }
+}
+
+.wave-animation {
+    animation: milkWave 12s linear infinite;
+}
+
+/* Scroll-Reveal Intersection Observer styles */
+.reveal-item {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s cubic-bezier(0.215, 0.61, 0.355, 1), 
+                transform 0.8s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+.reveal-item.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.reveal-item-left {
+    opacity: 0;
+    transform: translateX(-40px);
+    transition: opacity 0.8s cubic-bezier(0.215, 0.61, 0.355, 1), 
+                transform 0.8s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+.reveal-item-left.active {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.reveal-item-right {
+    opacity: 0;
+    transform: translateX(40px);
+    transition: opacity 0.8s cubic-bezier(0.215, 0.61, 0.355, 1), 
+                transform 0.8s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+.reveal-item-right.active {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Custom Text Gradient for Titles */
+.title-gradient {
+    background: linear-gradient(135deg, #1f2937 20%, #d35400 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.title-gradient-gold {
+    background: linear-gradient(135deg, #f59e0b 20%, #d35400 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Premium Product Card Zoom */
+.product-card-zoom img {
+    transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.product-card-zoom:hover img {
+    transform: scale(1.08);
+}

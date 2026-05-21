@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact & Online Orders | R.K. Dhanesh Mee Kiri</title>
+    <meta name="description" content="Calculate your curd order value and place an instant order via WhatsApp. Find our branches, phone numbers, and answers to delivery questions.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Sinhala:wght@400;600;700&family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        clay: {
+                            50: '#fdf6f0',
+                            100: '#fbece1',
+                            200: '#f8d9c3',
+                            500: '#d35400',
+                            600: '#ba4a00',
+                            700: '#a03e00',
+                        },
+                        cream: {
+                            50: '#fefefe',
+                            100: '#fcfbf7',
+                            200: '#f7f4eb',
+                            300: '#eedfcc',
+                        },
+                        gold: {
+                            500: '#f59e0b',
+                            600: '#d97706',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                        sinhala: ['Noto Serif Sinhala', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Custom Style -->
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="bg-cream-100 text-gray-800 font-sans selection:bg-clay-500 selection:text-white">
+
+    <!-- ---------------------------------------------------- -->
+    <!-- HEADER & NAVIGATION -->
+    <!-- ---------------------------------------------------- -->
+    <header class="fixed top-0 left-0 w-full z-50 glass-nav transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+            <!-- Brand Logo -->
+            <a href="index.html" class="flex items-center space-x-3 group">
+                <div class="w-10 h-10 rounded-full bg-clay-500 flex items-center justify-center text-white font-serif font-bold text-xl shadow-lg shadow-clay-500/20 group-hover:scale-105 transition-transform duration-300">
+                    RK
+                </div>
+                <div>
+                    <span class="block font-serif text-lg font-bold tracking-tight text-gray-900 leading-none group-hover:text-clay-500 transition-colors">R.K. Dhanesh</span>
+                    <span class="block font-sinhala text-[10px] text-clay-600 font-semibold tracking-wider uppercase mt-1">මී කිරි නිෂ්පාදන</span>
+                </div>
+            </a>
+
+            <!-- Desktop Menu -->
+            <nav class="hidden md:flex items-center space-x-8 font-medium">
+                <a href="index.html" class="text-gray-600 hover:text-clay-500 transition-colors">Home</a>
+                <a href="products.html" class="text-gray-600 hover:text-clay-500 transition-colors">Products</a>
+                <a href="about.html" class="text-gray-600 hover:text-clay-500 transition-colors">Our Heritage</a>
+                <a href="contact.html" class="text-clay-500 hover:text-clay-700 transition-colors relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-full after:h-[2px] after:bg-clay-500">Contact & Order</a>
+            </nav>
+
+            <!-- CTA Desktop Button -->
+            <div class="hidden md:block">
+                <a href="contact.html" class="px-6 py-2.5 rounded-full bg-clay-500 text-white font-semibold shadow-md shadow-clay-500/25 hover:bg-clay-600 hover:shadow-lg hover:shadow-clay-600/35 transition-all duration-300 transform hover:-translate-y-0.5">
+                    Order Now
+                </a>
+            </div>
+
+            <!-- Hamburger Button (Mobile) -->
+            <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg text-gray-600 hover:bg-clay-50 focus:outline-none" aria-label="Toggle menu">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <!-- Overlay & Mobile Drawer Navigation -->
+    <div id="drawer-overlay" class="fixed inset-0 bg-black/40 z-50 hidden transition-opacity duration-300"></div>
+    <div id="mobile-drawer" class="fixed top-0 right-0 h-full w-80 bg-cream-50 z-50 shadow-2xl transform translate-x-full transition-transform duration-300 ease-in-out p-6 flex flex-col justify-between">
+        <div>
+            <div class="flex items-center justify-between border-b border-gray-100 pb-4 mb-8">
+                <span class="font-serif font-bold text-lg text-gray-900">Navigation Menu</span>
+                <button id="mobile-menu-close" class="p-2 rounded-full text-gray-500 hover:bg-gray-100 focus:outline-none" aria-label="Close menu">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                    </svg>
+                </button>
+            </div>
+            <nav class="flex flex-col space-y-5 text-lg font-medium">
+                <a href="index.html" class="text-gray-700 hover:text-clay-500 py-2 border-b border-clay-50/50">Home</a>
+                <a href="products.html" class="text-gray-700 hover:text-clay-500 py-2 border-b border-clay-50/50">Products</a>
+                <a href="about.html" class="text-gray-700 hover:text-clay-500 py-2 border-b border-clay-50/50">Our Heritage</a>
+                <a href="contact.html" class="text-clay-500 py-2 border-b border-clay-50/50">Contact & Order</a>
+            </nav>
+        </div>
+        <div class="border-t border-gray-100 pt-6">
+            <a href="contact.html" class="block w-full text-center px-6 py-3 rounded-xl bg-clay-500 text-white font-semibold shadow-lg shadow-clay-500/20 hover:bg-clay-600 transition-colors">
+                Order via WhatsApp
+            </a>
+        </div>
+    </div>
+
+
+    <main class="pt-24">
+        <!-- ---------------------------------------------------- -->
+        <!-- CONTACT HERO BANNER -->
+        <!-- ---------------------------------------------------- -->
+        <section class="bg-gradient-to-br from-cream-200 to-cream-100 py-16 sm:py-24 border-b border-clay-100">
+            <div class="max-w-7xl mx-auto px-6 text-center space-y-4">
+                <span class="text-xs font-bold text-clay-600 tracking-widest uppercase">Fresh Delivery Channels</span>
+                <h1 class="font-serif text-4xl sm:text-5xl font-bold text-gray-900">Order & Contact Portal</h1>
+                <div class="w-16 h-1 bg-clay-500 mx-auto rounded-full"></div>
+                <p class="text-gray-500 max-w-xl mx-auto text-lg leading-relaxed">
+                    Estimate your curd order total below, enter your delivery address, and click send. Our system drafts a structured text to dispatch instantly to our WhatsApp.
+                </p>
+            </div>
+        </section>
+
+
+        <!-- ---------------------------------------------------- -->
+        <!-- ORDER CALCULATOR & branches DETAILS -->
+        <!-- ---------------------------------------------------- -->
+        <section class="py-24 bg-white">
+            <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-16">
+                
+                <!-- Left: Cost Calculator and Delivery form -->
+                <div class="lg:col-span-7 bg-cream-50 border border-gray-100 rounded-3xl p-6 sm:p-10 shadow-xl shadow-clay-500/[0.01] reveal-item-left">
+                    <h2 class="font-serif text-2xl font-bold text-gray-900 mb-6">Interactive Order Estimator</h2>
+                    
+                    <form class="space-y-8">
+                        <!-- Products quantities Selection -->
+                        <div class="space-y-4">
+                            <span class="block text-xs font-bold text-gray-400 uppercase tracking-wider">Step 1: Choose Quantities</span>
+                            
+                            <!-- Item 1: 1L Clay Pot -->
+                            <div class="flex items-center justify-between p-4 bg-white border border-gray-100 rounded-2xl shadow-sm">
+                                <div class="flex items-center space-x-4">
+                                    <span class="text-2xl">🏺</span>
+                                    <div>
+                                        <h3 class="font-bold text-gray-800 text-sm sm:text-base">1L Traditional Clay Pot</h3>
+                                        <span class="text-xs text-gray-500">Rs. 450 per pot</span>
+                                    </div>
+                                </div>
+                                <div class="flex items-center space-x-3">
+                                    <button type="button" id="btn-minus-large" class="w-8 h-8 rounded-full border border-gray-200 text-gray-500 hover:bg-clay-500 hover:text-white flex items-center justify-center font-bold transition-all focus:outline-none">&minus;</button>
+                                    <span id="calc-qty-large" class="w-6 text-center font-bold text-gray-800">0</span>
+                                    <button type="button" id="btn-plus-large" class="w-8 h-8 rounded-full border border-gray-200 text-gray-500 hover:bg-clay-500 hover:text-white flex items-center justify-center font-bold transition-all focus:outline-none">&plus;</button>
+                                </div>
+                            </div>
+
+                            <!-- Item 2: 750ml Clay Pot -->
+                            <div class="flex items-center justify-between p-4 bg-white border border-gray-100 rounded-2xl shadow-sm">
+                                <div class="flex items-center space-x-4">
+                                    <span class="text-2xl">🥛</span>
+                                    <div>
+                                        <h3 class="font-bold text-gray-800 text-sm sm:text-base">750ml Medium Clay Pot</h3>
+                                        <span class="text-xs text-gray-500">Rs. 350 per pot</span>
+                                    </div>
+                                </div>
+                                <div class="flex items-center space-x-3">
+                                    <button type="button" id="btn-minus-medium" class="w-8 h-8 rounded-full border border-gray-200 text-gray-500 hover:bg-clay-500 hover:text-white flex items-center justify-center font-bold transition-all focus:outline-none">&minus;</button>
+                                    <span id="calc-qty-medium" class="w-6 text-center font-bold text-gray-800">0</span>
+                                    <button type="button" id="btn-plus-medium" class="w-8 h-8 rounded-full border border-gray-200 text-gray-500 hover:bg-clay-500 hover:text-white flex items-center justify-center font-bold transition-all focus:outline-none">&plus;</button>
+                                </div>
+                            </div>
+
+                            <!-- Item 3: 375ml Treacle Bottle -->
+                            <div class="flex items-center justify-between p-4 bg-white border border-gray-100 rounded-2xl shadow-sm">
+                                <div class="flex items-center space-x-4">
+                                    <span class="text-2xl">🍯</span>
+                                    <div>
+                                        <h3 class="font-bold text-gray-800 text-sm sm:text-base">Premium Kithul Treacle Bottle (375ml)</h3>
+                                        <span class="text-xs text-gray-500">Rs. 750 per bottle</span>
+                                    </div>
+                                </div>
+                                <div class="flex items-center space-x-3">
+                                    <button type="button" id="btn-minus-treacle" class="w-8 h-8 rounded-full border border-gray-200 text-gray-500 hover:bg-clay-500 hover:text-white flex items-center justify-center font-bold transition-all focus:outline-none">&minus;</button>
+                                    <span id="calc-qty-treacle" class="w-6 text-center font-bold text-gray-800">0</span>
+                                    <button type="button" id="btn-plus-treacle" class="w-8 h-8 rounded-full border border-gray-200 text-gray-500 hover:bg-clay-500 hover:text-white flex items-center justify-center font-bold transition-all focus:outline-none">&plus;</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- User Info Form -->
+                        <div class="space-y-4 pt-4 border-t border-gray-200/50">
+                            <span class="block text-xs font-bold text-gray-400 uppercase tracking-wider">Step 2: Delivery Details</span>
+                            
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div>
+                                    <label for="order-name" class="block text-xs font-bold text-gray-600 uppercase mb-2">Your Name</label>
+                                    <input type="text" id="order-name" placeholder="E.g., Dhanesh Perera" class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-white text-gray-800 focus:outline-none focus:border-clay-500 text-sm">
+                                </div>
+                                <div>
+                                    <label for="order-phone" class="block text-xs font-bold text-gray-600 uppercase mb-2">WhatsApp Number</label>
+                                    <input type="tel" id="order-phone" placeholder="E.g., 0771234567" class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-white text-gray-800 focus:outline-none focus:border-clay-500 text-sm">
+                                </div>
+                            </div>
+
+                            <div>
+                                <label for="order-address" class="block text-xs font-bold text-gray-600 uppercase mb-2">Delivery Address</label>
+                                <input type="text" id="order-address" placeholder="E.g., No. 24, Tangalle Road, Hambantota" class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-white text-gray-800 focus:outline-none focus:border-clay-500 text-sm">
+                            </div>
+
+                            <div>
+                                <label for="order-notes" class="block text-xs font-bold text-gray-600 uppercase mb-2">Special Notes (Optional)</label>
+                                <textarea id="order-notes" rows="3" placeholder="E.g., Please deliver before 12:00 PM / require extra clay lids" class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-white text-gray-800 focus:outline-none focus:border-clay-500 text-sm resize-none"></textarea>
+                            </div>
+                        </div>
+
+                        <!-- Calculation Total Display -->
+                        <div class="p-6 bg-clay-500 rounded-2xl text-white flex flex-col sm:flex-row items-center justify-between gap-4">
+                            <div>
+                                <span class="block text-xs font-bold text-clay-200 tracking-wider uppercase">Estimated Subtotal</span>
+                                <span id="calc-total" class="text-3xl font-extrabold">Rs. 0</span>
+                            </div>
+                            <button id="btn-submit-order" class="w-full sm:w-auto px-8 py-3.5 bg-white text-clay-700 hover:bg-cream-100 rounded-xl font-bold transition-all shadow-md">
+                                Order via WhatsApp 💬
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Right: branch Info, stylized map, FAQ -->
+                <div class="lg:col-span-5 space-y-8 reveal-item-right">
+                    <!-- Headquarters details -->
+                    <div class="bg-white border border-gray-100 rounded-3xl p-6 sm:p-8 shadow-lg shadow-clay-500/[0.01]">
+                        <h3 class="font-serif text-xl font-bold text-gray-900 mb-4">Branch Headquarters</h3>
+                        <ul class="space-y-4 text-sm text-gray-600">
+                            <li class="flex items-start space-x-3">
+                                <span class="text-clay-500 text-lg">📍</span>
+                                <span>R.K. Dhanesh Mee Kiri, Tangalle Road, Hambantota, Sri Lanka</span>
+                            </li>
+                            <li class="flex items-center space-x-3">
+                                <span class="text-clay-500 text-lg">📞</span>
+                                <a href="tel:+94771234567" class="hover:text-clay-500 transition-colors">+94 77 123 4567</a>
+                            </li>
+                            <li class="flex items-center space-x-3">
+                                <span class="text-clay-500 text-lg">📧</span>
+                                <a href="mailto:info@rkdhaneshcurd.lk" class="hover:text-clay-500 transition-colors">orders@rkdhaneshcurd.lk</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- stylized organic map container -->
+                    <div class="relative h-60 rounded-3xl overflow-hidden border-4 border-white shadow-xl bg-gray-200 group">
+                        <!-- Custom Stylized Background representing Map -->
+                        <div class="absolute inset-0 z-0">
+                            <img src="assets/images/farm_nature.png" alt="Map View" class="w-full h-full object-cover opacity-60 filter grayscale-50">
+                            <div class="absolute inset-0 bg-gradient-to-tr from-clay-500/20 to-amber-500/25 mix-blend-color"></div>
+                        </div>
+                        <div class="absolute inset-0 flex items-center justify-center z-10">
+                            <div class="bg-white/95 backdrop-blur px-6 py-4 rounded-2xl border border-clay-100 text-center shadow-lg transform group-hover:scale-105 transition-transform duration-300">
+                                <span class="block text-2xl mb-1">📍</span>
+                                <span class="block font-serif font-bold text-gray-900 text-sm">Hambantota Outlet</span>
+                                <span class="block text-xs text-gray-500 mt-1">Tangalle Main Road</span>
+                                <a href="https://maps.google.com" target="_blank" class="inline-block mt-2 text-xs font-bold text-clay-500 hover:underline">Get Directions &rarr;</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- FAQ Accordion -->
+                    <div class="space-y-4">
+                        <h3 class="font-serif text-xl font-bold text-gray-900 mb-4">Frequently Asked Questions</h3>
+                        
+                        <!-- FAQ 1 -->
+                        <details class="group bg-cream-50 border border-gray-100 rounded-2xl p-4 [&_summary::-webkit-details-marker]:hidden focus:outline-none" open>
+                            <summary class="flex justify-between items-center font-bold text-gray-800 text-sm cursor-pointer select-none">
+                                <span>Do you charge for home deliveries?</span>
+                                <span class="text-clay-500 transition-transform group-open:rotate-180 font-bold text-lg">&darr;</span>
+                            </summary>
+                            <p class="text-xs text-gray-500 mt-3 leading-relaxed">
+                                Deliveries within the Hambantota town limit are completely free of charge! For long-distance orders (such as Colombo, Galle, or Gampaha districts), we charge a small logistics fee to dispatch them in thermal cooled packages.
+                            </p>
+                        </details>
+
+                        <!-- FAQ 2 -->
+                        <details class="group bg-cream-50 border border-gray-100 rounded-2xl p-4 [&_summary::-webkit-details-marker]:hidden focus:outline-none">
+                            <summary class="flex justify-between items-center font-bold text-gray-800 text-sm cursor-pointer select-none">
+                                <span>Can I return the empty clay pots?</span>
+                                <span class="text-clay-500 transition-transform group-open:rotate-180 font-bold text-lg">&darr;</span>
+                            </summary>
+                            <p class="text-xs text-gray-500 mt-3 leading-relaxed">
+                                Yes! In line with our eco-friendly organic promise, you can return dry, empty, clean R.K. Dhanesh clay pots to any of our outlets. We will give you a Rs. 20 refund or discount per pot for your next curd purchase!
+                            </p>
+                        </details>
+
+                        <!-- FAQ 3 -->
+                        <details class="group bg-cream-50 border border-gray-100 rounded-2xl p-4 [&_summary::-webkit-details-marker]:hidden focus:outline-none">
+                            <summary class="flex justify-between items-center font-bold text-gray-800 text-sm cursor-pointer select-none">
+                                <span>How long does the curd stay fresh?</span>
+                                <span class="text-clay-500 transition-transform group-open:rotate-180 font-bold text-lg">&darr;</span>
+                            </summary>
+                            <p class="text-xs text-gray-500 mt-3 leading-relaxed">
+                                Since our curd is 100% natural and preservative-free, it stays perfectly fresh for up to 7-10 days inside a standard home refrigerator. Keep it covered to prevent it from absorbing other refrigerator odors.
+                            </p>
+                        </details>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+
+    <!-- ---------------------------------------------------- -->
+    <!-- FOOTER -->
+    <!-- ---------------------------------------------------- -->
+    <footer class="bg-gray-950 text-gray-400 py-16 border-t border-gray-900">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-12 gap-12">
+            <!-- Brand Column -->
+            <div class="md:col-span-4 space-y-4">
+                <a href="index.html" class="flex items-center space-x-3 group">
+                    <div class="w-10 h-10 rounded-full bg-clay-500 flex items-center justify-center text-white font-serif font-bold text-xl shadow-lg">
+                        RK
+                    </div>
+                    <div>
+                        <span class="block font-serif text-lg font-bold tracking-tight text-white leading-none">R.K. Dhanesh</span>
+                        <span class="block font-sinhala text-[10px] text-clay-500 font-semibold tracking-wider uppercase mt-1">මී කිරි නිෂ්පාදන</span>
+                    </div>
+                </a>
+                <p class="text-sm leading-relaxed text-gray-500 max-w-xs pt-2">
+                    Bringing pure, natural, traditionally prepared organic buffalo curd directly from natural Sri Lankan dairy pastures to premium tables.
+                </p>
+                <div class="flex space-x-4 pt-2">
+                    <a href="#" class="w-8 h-8 rounded-full bg-gray-900 border border-gray-800 flex items-center justify-center hover:border-clay-500 hover:text-white transition-colors" aria-label="Facebook">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c4.56-.93 8-4.96 8-9.8z"/></svg>
+                    </a>
+                    <a href="#" class="w-8 h-8 rounded-full bg-gray-900 border border-gray-800 flex items-center justify-center hover:border-clay-500 hover:text-white transition-colors" aria-label="Instagram">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Quick Links -->
+            <div class="md:col-span-3 space-y-4">
+                <h4 class="font-serif text-white font-bold text-base tracking-wide">Explore Brand</h4>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="index.html" class="hover:text-clay-500 transition-colors">Home Portal</a></li>
+                    <li><a href="products.html" class="hover:text-clay-500 transition-colors">Curd Options</a></li>
+                    <li><a href="about.html" class="hover:text-clay-500 transition-colors">Traditional Story</a></li>
+                    <li><a href="contact.html" class="hover:text-clay-500 transition-colors">Order Calculator</a></li>
+                </ul>
+            </div>
+
+            <!-- Address / Business hours -->
+            <div class="md:col-span-5 space-y-4">
+                <h4 class="font-serif text-white font-bold text-base tracking-wide">Dairy Headquarters</h4>
+                <ul class="space-y-3 text-sm">
+                    <li class="flex items-start space-x-3">
+                        <span class="text-clay-500">📍</span>
+                        <span>R.K. Dhanesh Mee Kiri, Tangalle Road, Hambantota, Sri Lanka</span>
+                    </li>
+                    <li class="flex items-center space-x-3">
+                        <span class="text-clay-500">📞</span>
+                        <a href="tel:+94771234567" class="hover:text-clay-500 transition-colors">+94 77 123 4567</a>
+                    </li>
+                    <li class="flex items-center space-x-3">
+                        <span class="text-clay-500">🕒</span>
+                        <span>Monday - Sunday: 6:00 AM - 8:00 PM</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Copyright -->
+        <div class="max-w-7xl mx-auto px-6 border-t border-gray-900 mt-12 pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-gray-600">
+            <span>&copy; 2026 R.K. Dhanesh Mee Kiri. All Rights Reserved.</span>
+            <div class="flex space-x-4 mt-4 sm:mt-0">
+                <a href="#" class="hover:underline">Privacy Policy</a>
+                <a href="#" class="hover:underline">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Vanilla Javascript Logic -->
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

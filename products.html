@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products Portfolio | R.K. Dhanesh Mee Kiri</title>
+    <meta name="description" content="Explore our authentic buffalo curd product sizes. From traditional 1L clay pots to modern individual cups, handmade with absolute organic purity.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Sinhala:wght@400;600;700&family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        clay: {
+                            50: '#fdf6f0',
+                            100: '#fbece1',
+                            200: '#f8d9c3',
+                            500: '#d35400',
+                            600: '#ba4a00',
+                            700: '#a03e00',
+                        },
+                        cream: {
+                            50: '#fefefe',
+                            100: '#fcfbf7',
+                            200: '#f7f4eb',
+                            300: '#eedfcc',
+                        },
+                        gold: {
+                            500: '#f59e0b',
+                            600: '#d97706',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                        sinhala: ['Noto Serif Sinhala', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Custom Style -->
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="bg-cream-100 text-gray-800 font-sans selection:bg-clay-500 selection:text-white">
+
+    <!-- ---------------------------------------------------- -->
+    <!-- HEADER & NAVIGATION -->
+    <!-- ---------------------------------------------------- -->
+    <header class="fixed top-0 left-0 w-full z-50 glass-nav transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+            <!-- Brand Logo -->
+            <a href="index.html" class="flex items-center space-x-3 group">
+                <div class="w-10 h-10 rounded-full bg-clay-500 flex items-center justify-center text-white font-serif font-bold text-xl shadow-lg shadow-clay-500/20 group-hover:scale-105 transition-transform duration-300">
+                    RK
+                </div>
+                <div>
+                    <span class="block font-serif text-lg font-bold tracking-tight text-gray-900 leading-none group-hover:text-clay-500 transition-colors">R.K. Dhanesh</span>
+                    <span class="block font-sinhala text-[10px] text-clay-600 font-semibold tracking-wider uppercase mt-1">මී කිරි නිෂ්පාදන</span>
+                </div>
+            </a>
+
+            <!-- Desktop Menu -->
+            <nav class="hidden md:flex items-center space-x-8 font-medium">
+                <a href="index.html" class="text-gray-600 hover:text-clay-500 transition-colors">Home</a>
+                <a href="products.html" class="text-clay-500 hover:text-clay-700 transition-colors relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-full after:h-[2px] after:bg-clay-500">Products</a>
+                <a href="about.html" class="text-gray-600 hover:text-clay-500 transition-colors">Our Heritage</a>
+                <a href="contact.html" class="text-gray-600 hover:text-clay-500 transition-colors">Contact & Order</a>
+            </nav>
+
+            <!-- CTA Desktop Button -->
+            <div class="hidden md:block">
+                <a href="contact.html" class="px-6 py-2.5 rounded-full bg-clay-500 text-white font-semibold shadow-md shadow-clay-500/25 hover:bg-clay-600 hover:shadow-lg hover:shadow-clay-600/35 transition-all duration-300 transform hover:-translate-y-0.5">
+                    Order Now
+                </a>
+            </div>
+
+            <!-- Hamburger Button (Mobile) -->
+            <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg text-gray-600 hover:bg-clay-50 focus:outline-none" aria-label="Toggle menu">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <!-- Overlay & Mobile Drawer Navigation -->
+    <div id="drawer-overlay" class="fixed inset-0 bg-black/40 z-50 hidden transition-opacity duration-300"></div>
+    <div id="mobile-drawer" class="fixed top-0 right-0 h-full w-80 bg-cream-50 z-50 shadow-2xl transform translate-x-full transition-transform duration-300 ease-in-out p-6 flex flex-col justify-between">
+        <div>
+            <div class="flex items-center justify-between border-b border-gray-100 pb-4 mb-8">
+                <span class="font-serif font-bold text-lg text-gray-900">Navigation Menu</span>
+                <button id="mobile-menu-close" class="p-2 rounded-full text-gray-500 hover:bg-gray-100 focus:outline-none" aria-label="Close menu">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                    </svg>
+                </button>
+            </div>
+            <nav class="flex flex-col space-y-5 text-lg font-medium">
+                <a href="index.html" class="text-gray-700 hover:text-clay-500 py-2 border-b border-clay-50/50">Home</a>
+                <a href="products.html" class="text-clay-500 py-2 border-b border-clay-50/50">Products</a>
+                <a href="about.html" class="text-gray-700 hover:text-clay-500 py-2 border-b border-clay-50/50">Our Heritage</a>
+                <a href="contact.html" class="text-gray-700 hover:text-clay-500 py-2 border-b border-clay-50/50">Contact & Order</a>
+            </nav>
+        </div>
+        <div class="border-t border-gray-100 pt-6">
+            <a href="contact.html" class="block w-full text-center px-6 py-3 rounded-xl bg-clay-500 text-white font-semibold shadow-lg shadow-clay-500/20 hover:bg-clay-600 transition-colors">
+                Order via WhatsApp
+            </a>
+        </div>
+    </div>
+
+
+    <main class="pt-24">
+        <!-- ---------------------------------------------------- -->
+        <!-- PRODUCTS BANNER HERO -->
+        <!-- ---------------------------------------------------- -->
+        <section class="bg-gradient-to-br from-cream-200 to-cream-100 py-16 sm:py-24 border-b border-clay-100">
+            <div class="max-w-7xl mx-auto px-6 text-center space-y-4">
+                <span class="text-xs font-bold text-clay-600 tracking-widest uppercase">The Royal Curd Collection</span>
+                <h1 class="font-serif text-4xl sm:text-5xl font-bold text-gray-900">Traditional Curd Portfolio</h1>
+                <div class="w-16 h-1 bg-clay-500 mx-auto rounded-full"></div>
+                <p class="text-gray-500 max-w-xl mx-auto text-lg">
+                    Discover our collection of 100% natural, pasture-sourced buffalo curd hand-poured in authentic clay pots and modern eco-friendly jars.
+                </p>
+            </div>
+        </section>
+
+
+        <!-- ---------------------------------------------------- -->
+        <!-- PRODUCTS GRID SECTION -->
+        <!-- ---------------------------------------------------- -->
+        <section class="py-24 bg-white">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    <!-- Product 1: 1L Traditional Clay Pot -->
+                    <div class="glass-card rounded-3xl overflow-hidden border border-gray-100 flex flex-col justify-between hover:shadow-2xl hover:shadow-clay-500/[0.03] transition-all duration-300 product-card-zoom reveal-item">
+                        <div>
+                            <!-- Aspect ratio box for image -->
+                            <div class="relative aspect-video overflow-hidden">
+                                <img src="assets/images/product_clay.png" alt="R.K. Dhanesh 1L Traditional Clay Pot Curd" class="w-full h-full object-cover">
+                                <span class="absolute top-4 right-4 bg-clay-500 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
+                                    Best Seller
+                                </span>
+                            </div>
+                            <div class="p-8 space-y-4">
+                                <div class="flex justify-between items-start">
+                                    <div>
+                                        <h3 class="text-xl font-bold text-gray-900">Traditional Clay Pot (1L)</h3>
+                                        <span class="text-xs text-clay-600 font-bold uppercase tracking-wider mt-1 block">ලොකු මැටි හට්ටිය</span>
+                                    </div>
+                                    <span class="text-xl font-extrabold text-clay-500">Rs. 450</span>
+                                </div>
+                                <p class="text-gray-500 text-sm leading-relaxed">
+                                    The crown jewel of traditional dairy. Fermented inside highly porous rustic clay pots that absorb extra moisture, guaranteeing a velvety consistency and earthy aroma. Ideal for a family lunch.
+                                </p>
+                                <!-- Nutrition Quick Table -->
+                                <div class="bg-cream-100/50 rounded-xl p-4 border border-clay-100/20 text-xs">
+                                    <h4 class="font-bold text-gray-700 mb-2 uppercase tracking-wide">Nutritional Estimation (Per 100g)</h4>
+                                    <div class="grid grid-cols-2 gap-2 text-gray-500">
+                                        <div class="flex justify-between border-b border-gray-100 pb-1">
+                                            <span>Energy</span>
+                                            <span class="font-semibold text-gray-700">110 kcal</span>
+                                        </div>
+                                        <div class="flex justify-between border-b border-gray-100 pb-1">
+                                            <span>Protein</span>
+                                            <span class="font-semibold text-gray-700">4.5 g</span>
+                                        </div>
+                                        <div class="flex justify-between border-b border-gray-100 pb-1">
+                                            <span>Dairy Fat</span>
+                                            <span class="font-semibold text-gray-700">7.8 g</span>
+                                        </div>
+                                        <div class="flex justify-between border-b border-gray-100 pb-1">
+                                            <span>Calcium</span>
+                                            <span class="font-semibold text-gray-700">150 mg</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-8 pt-0">
+                            <a href="contact.html" class="block w-full text-center py-3 rounded-xl bg-clay-500 hover:bg-clay-600 text-white font-bold transition-colors">
+                                Add to Order Checklist
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Product 2: 750ml Medium Clay Pot -->
+                    <div class="glass-card rounded-3xl overflow-hidden border border-gray-100 flex flex-col justify-between hover:shadow-2xl hover:shadow-clay-500/[0.03] transition-all duration-300 product-card-zoom reveal-item" style="transition-delay: 150ms;">
+                        <div>
+                            <div class="relative aspect-video overflow-hidden">
+                                <!-- Re-use the clay pot image with nice styling -->
+                                <img src="assets/images/hero_curd.png" alt="R.K. Dhanesh 750ml Clay Pot Curd" class="w-full h-full object-cover">
+                            </div>
+                            <div class="p-8 space-y-4">
+                                <div class="flex justify-between items-start">
+                                    <div>
+                                        <h3 class="text-xl font-bold text-gray-900">Medium Clay Pot (750ml)</h3>
+                                        <span class="text-xs text-clay-600 font-bold uppercase tracking-wider mt-1 block">මධ්‍යම මැටි හට්ටිය</span>
+                                    </div>
+                                    <span class="text-xl font-extrabold text-clay-500">Rs. 350</span>
+                                </div>
+                                <p class="text-gray-500 text-sm leading-relaxed">
+                                    Same authentic taste, smaller size. Perfect for couples or individuals looking to indulge in rich Ceylon curd. Fermented purely in clay pots over brick firewood pasteurization.
+                                </p>
+                                <!-- Nutrition Quick Table -->
+                                <div class="bg-cream-100/50 rounded-xl p-4 border border-clay-100/20 text-xs">
+                                    <h4 class="font-bold text-gray-700 mb-2 uppercase tracking-wide">Nutritional Estimation (Per 100g)</h4>
+                                    <div class="grid grid-cols-2 gap-2 text-gray-500">
+                                        <div class="flex justify-between border-b border-gray-100 pb-1">
+                                            <span>Energy</span>
+                                            <span class="font-semibold text-gray-700">110 kcal</span>
+                                        </div>
+                                        <div class="flex justify-between border-b border-gray-100 pb-1">
+                                            <span>Protein</span>
+                                            <span class="font-semibold text-gray-700">4.5 g</span>
+                                        </div>
+                                        <div class="flex justify-between border-b border-gray-100 pb-1">
+                                            <span>Dairy Fat</span>
+                                            <span class="font-semibold text-gray-700">7.8 g</span>
+                                        </div>
+                                        <div class="flex justify-between border-b border-gray-100 pb-1">
+                                            <span>Calcium</span>
+                                            <span class="font-semibold text-gray-700">150 mg</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-8 pt-0">
+                            <a href="contact.html" class="block w-full text-center py-3 rounded-xl bg-clay-500 hover:bg-clay-600 text-white font-bold transition-colors">
+                                Add to Order Checklist
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Product 3: Premium Curd Cup (200ml) -->
+                    <div class="glass-card rounded-3xl overflow-hidden border border-gray-100 flex flex-col justify-between hover:shadow-2xl hover:shadow-clay-500/[0.03] transition-all duration-300 product-card-zoom reveal-item" style="transition-delay: 300ms;">
+                        <div>
+                            <div class="relative aspect-video overflow-hidden">
+                                <img src="assets/images/product_cup.png" alt="R.K. Dhanesh 200ml Premium Curd Cup" class="w-full h-full object-cover">
+                                <span class="absolute top-4 right-4 bg-amber-500 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
+                                    New Modern Eco
+                                </span>
+                            </div>
+                            <div class="p-8 space-y-4">
+                                <div class="flex justify-between items-start">
+                                    <div>
+                                        <h3 class="text-xl font-bold text-gray-900">Modern Curd Cup (200ml)</h3>
+                                        <span class="text-xs text-clay-600 font-bold uppercase tracking-wider mt-1 block">කුඩා කෝප්පය</span>
+                                    </div>
+                                    <span class="text-xl font-extrabold text-clay-500">Rs. 120</span>
+                                </div>
+                                <p class="text-gray-500 text-sm leading-relaxed">
+                                    A convenient, single-serving portion of thick-set buffalo curd packed inside a premium modern glass jar or organic cup. Perfectly designed for healthy breakfasts or mid-day snacks.
+                                </p>
+                                <!-- Nutrition Quick Table -->
+                                <div class="bg-cream-100/50 rounded-xl p-4 border border-clay-100/20 text-xs">
+                                    <h4 class="font-bold text-gray-700 mb-2 uppercase tracking-wide">Nutritional Estimation (Per 100g)</h4>
+                                    <div class="grid grid-cols-2 gap-2 text-gray-500">
+                                        <div class="flex justify-between border-b border-gray-100 pb-1">
+                                            <span>Energy</span>
+                                            <span class="font-semibold text-gray-700">110 kcal</span>
+                                        </div>
+                                        <div class="flex justify-between border-b border-gray-100 pb-1">
+                                            <span>Protein</span>
+                                            <span class="font-semibold text-gray-700">4.5 g</span>
+                                        </div>
+                                        <div class="flex justify-between border-b border-gray-100 pb-1">
+                                            <span>Dairy Fat</span>
+                                            <span class="font-semibold text-gray-700">7.8 g</span>
+                                        </div>
+                                        <div class="flex justify-between border-b border-gray-100 pb-1">
+                                            <span>Calcium</span>
+                                            <span class="font-semibold text-gray-700">150 mg</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-8 pt-0">
+                            <a href="contact.html" class="block w-full text-center py-3 rounded-xl bg-clay-500 hover:bg-clay-600 text-white font-bold transition-colors">
+                                Add to Order Checklist
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ---------------------------------------------------- -->
+        <!-- SEAL OF EXCELLENCE BANNER -->
+        <!-- ---------------------------------------------------- -->
+        <section class="py-20 bg-gradient-to-r from-clay-500 to-clay-700 text-white">
+            <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <!-- Text -->
+                <div class="space-y-4 reveal-item-left">
+                    <span class="text-xs font-bold tracking-widest text-amber-300 uppercase">100% Chemical-Free Promise</span>
+                    <h2 class="font-serif text-3xl sm:text-4xl font-bold">The Authentic Quality Guarantee</h2>
+                    <p class="text-clay-100 leading-relaxed">
+                        At R.K. Dhanesh Mee Kiri, quality isn’t an option—it’s our legacy. We never compromise on milk quality. No gelatin, no thickeners, and absolutely no artificial colors. Our curd is set naturally by microflora indigenous to the Hambantota region.
+                    </p>
+                </div>
+
+                <!-- Icons list -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 reveal-item-right">
+                    <div class="flex items-start space-x-4">
+                        <div class="w-12 h-12 bg-white/15 border border-white/20 rounded-xl flex items-center justify-center font-bold text-xl shrink-0">
+                            🛡️
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-lg text-white">100% Clean Sourced</h4>
+                            <p class="text-xs text-clay-100 mt-1">Buffalo milk free from antibiotics and artificial growth hormones.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start space-x-4">
+                        <div class="w-12 h-12 bg-white/15 border border-white/20 rounded-xl flex items-center justify-center font-bold text-xl shrink-0">
+                            🌡️
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-lg text-white">Strict Pasteurization</h4>
+                            <p class="text-xs text-clay-100 mt-1">Proper firewood heating eliminates unwanted pathogens completely.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start space-x-4">
+                        <div class="w-12 h-12 bg-white/15 border border-white/20 rounded-xl flex items-center justify-center font-bold text-xl shrink-0">
+                            🌍
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-lg text-white">Eco Clay Packaging</h4>
+                            <p class="text-xs text-clay-100 mt-1">Biodegradable clay pots preserve freshness and nurture mother earth.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start space-x-4">
+                        <div class="w-12 h-12 bg-white/15 border border-white/20 rounded-xl flex items-center justify-center font-bold text-xl shrink-0">
+                            🥛
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-lg text-white">Rich in Nutrients</h4>
+                            <p class="text-xs text-clay-100 mt-1">High in healthy probiotics, protein, calcium, and good fats.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ---------------------------------------------------- -->
+        <!-- CUSTOM TREACLE COMPLEMENT SECTION -->
+        <!-- ---------------------------------------------------- -->
+        <section class="py-24 bg-cream-200/40">
+            <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <!-- Image Left -->
+                <div class="lg:col-span-5 reveal-item-left">
+                    <div class="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-white group aspect-square">
+                        <img src="assets/images/hero_curd.png" alt="Pure Curd topped with Organic Kithul Treacle" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                        <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-all duration-300"></div>
+                    </div>
+                </div>
+
+                <!-- Text Right -->
+                <div class="lg:col-span-7 space-y-6 reveal-item-right">
+                    <span class="text-xs font-bold text-clay-600 tracking-widest uppercase">The Perfect Marriage</span>
+                    <h2 class="font-serif text-3xl sm:text-4xl font-bold text-gray-900 leading-tight">Authentic Kithul Treacle</h2>
+                    <div class="w-16 h-1 bg-clay-500 rounded-full"></div>
+                    <p class="text-gray-600 text-lg leading-relaxed">
+                        Curd is incomplete without sweet, golden Kithul Treacle (*කිනිතුල් පැණි*). Sourced from the mountainous rainforest valleys of Sri Lanka, our treacle is 100% organic, sweet, and heavy. We bottle this liquid gold raw without dilute sugar syrups.
+                    </p>
+                    <!-- Price Card -->
+                    <div class="inline-flex items-center space-x-4 bg-white border border-clay-100 rounded-2xl p-4 shadow-sm">
+                        <span class="text-3xl">🍯</span>
+                        <div>
+                            <span class="block text-xs font-bold text-gray-500 uppercase">Premium Treacle Bottle (375ml)</span>
+                            <span class="block text-lg font-extrabold text-clay-500">Rs. 750</span>
+                        </div>
+                    </div>
+                    <div>
+                        <a href="contact.html" class="inline-block px-8 py-3.5 rounded-full bg-clay-500 text-white font-bold hover:bg-clay-600 hover:shadow-lg hover:shadow-clay-600/35 transition-all duration-300">
+                            Order Curd & Treacle Combo
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+
+    <!-- ---------------------------------------------------- -->
+    <!-- FOOTER -->
+    <!-- ---------------------------------------------------- -->
+    <footer class="bg-gray-950 text-gray-400 py-16 border-t border-gray-900">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-12 gap-12">
+            <!-- Brand Column -->
+            <div class="md:col-span-4 space-y-4">
+                <a href="index.html" class="flex items-center space-x-3 group">
+                    <div class="w-10 h-10 rounded-full bg-clay-500 flex items-center justify-center text-white font-serif font-bold text-xl shadow-lg">
+                        RK
+                    </div>
+                    <div>
+                        <span class="block font-serif text-lg font-bold tracking-tight text-white leading-none">R.K. Dhanesh</span>
+                        <span class="block font-sinhala text-[10px] text-clay-500 font-semibold tracking-wider uppercase mt-1">මී කිරි නිෂ්පාදන</span>
+                    </div>
+                </a>
+                <p class="text-sm leading-relaxed text-gray-500 max-w-xs pt-2">
+                    Bringing pure, natural, traditionally prepared organic buffalo curd directly from natural Sri Lankan dairy pastures to premium tables.
+                </p>
+                <div class="flex space-x-4 pt-2">
+                    <a href="#" class="w-8 h-8 rounded-full bg-gray-900 border border-gray-800 flex items-center justify-center hover:border-clay-500 hover:text-white transition-colors" aria-label="Facebook">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c4.56-.93 8-4.96 8-9.8z"/></svg>
+                    </a>
+                    <a href="#" class="w-8 h-8 rounded-full bg-gray-900 border border-gray-800 flex items-center justify-center hover:border-clay-500 hover:text-white transition-colors" aria-label="Instagram">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Quick Links -->
+            <div class="md:col-span-3 space-y-4">
+                <h4 class="font-serif text-white font-bold text-base tracking-wide">Explore Brand</h4>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="index.html" class="hover:text-clay-500 transition-colors">Home Portal</a></li>
+                    <li><a href="products.html" class="hover:text-clay-500 transition-colors">Curd Options</a></li>
+                    <li><a href="about.html" class="hover:text-clay-500 transition-colors">Traditional Story</a></li>
+                    <li><a href="contact.html" class="hover:text-clay-500 transition-colors">Order Calculator</a></li>
+                </ul>
+            </div>
+
+            <!-- Address / Business hours -->
+            <div class="md:col-span-5 space-y-4">
+                <h4 class="font-serif text-white font-bold text-base tracking-wide">Dairy Headquarters</h4>
+                <ul class="space-y-3 text-sm">
+                    <li class="flex items-start space-x-3">
+                        <span class="text-clay-500">📍</span>
+                        <span>R.K. Dhanesh Mee Kiri, Tangalle Road, Hambantota, Sri Lanka</span>
+                    </li>
+                    <li class="flex items-center space-x-3">
+                        <span class="text-clay-500">📞</span>
+                        <a href="tel:+94771234567" class="hover:text-clay-500 transition-colors">+94 77 123 4567</a>
+                    </li>
+                    <li class="flex items-center space-x-3">
+                        <span class="text-clay-500">🕒</span>
+                        <span>Monday - Sunday: 6:00 AM - 8:00 PM</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Copyright -->
+        <div class="max-w-7xl mx-auto px-6 border-t border-gray-900 mt-12 pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-gray-600">
+            <span>&copy; 2026 R.K. Dhanesh Mee Kiri. All Rights Reserved.</span>
+            <div class="flex space-x-4 mt-4 sm:mt-0">
+                <a href="#" class="hover:underline">Privacy Policy</a>
+                <a href="#" class="hover:underline">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Vanilla Javascript Logic -->
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
